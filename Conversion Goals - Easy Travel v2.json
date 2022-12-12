@@ -1,0 +1,238 @@
+ {
+  "metadata": {
+    "configurationVersions": [
+      6
+    ],
+    "clusterVersion": "1.258.0.20221212-163227"
+  },
+  "id": "4dacfa39-f3a8-429f-bc35-67e5b14a127e",
+  "dashboardMetadata": {
+    "name": "${app.name} - Conversion Goals",
+    "shared": false,
+    "owner": "sahil.verma@dynatrace.com",
+    "popularity": 10,
+    "hasConsistentColors": false
+  },
+  "tiles": [
+    {
+      "name": "Conversion Goal vs Total User Sessions",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 0,
+        "width": 760,
+        "height": 418
+      },
+      "tileFilter": {},
+      "customName": "Data explorer results",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "builtin:apps.web.conversionRate",
+          "spaceAggregation": "COUNT",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "sortBy": "DESC",
+          "filterBy": {
+            "filterOperator": "AND",
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 100,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "dsfm:server.rum.user_session_count",
+          "spaceAggregation": "SUM",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [],
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {
+          "hideLegend": false
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "valueFormat": "auto",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "COLUMN"
+            },
+            "seriesOverrides": []
+          },
+          {
+            "matcher": "B:",
+            "valueFormat": "auto",
+            "properties": {
+              "color": "DEFAULT",
+              "seriesType": "COLUMN"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "displayName": "",
+            "visible": true
+          },
+          "yAxes": [
+            {
+              "displayName": "",
+              "visible": true,
+              "min": "AUTO",
+              "max": "AUTO",
+              "position": "LEFT",
+              "queryIds": [
+                "A",
+                "B"
+              ],
+              "defaultAxis": true
+            }
+          ]
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "isThresholdBackgroundAppliedToCell": false
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      },
+      "metricExpressions": [
+        "resolution=null&(builtin:apps.web.conversionRate:splitBy():count:auto:sort(value(avg,descending)):limit(100)):limit(100):names"
+      ]
+    },
+    {
+      "name": "Conversion goal",
+      "nameSize": "medium",
+      "tileType": "UEM_CONVERSIONS_PER_GOAL",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 0,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "assignedEntities": [
+        "${app.id}"
+      ],
+      "metric": "704506dd-4dad-48fb-b3b4-517e8ad3feba"
+    },
+    {
+      "name": "Conversion goal",
+      "nameSize": "medium",
+      "tileType": "UEM_CONVERSIONS_PER_GOAL",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 304,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "assignedEntities": [
+        "${app.id}"
+      ],
+      "metric": "ff4dc104-d807-4666-883d-d7969dedacfd"
+    },
+    {
+      "name": "Conversion goal",
+      "nameSize": "medium",
+      "tileType": "UEM_CONVERSIONS_PER_GOAL",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 608,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "assignedEntities": [
+        "${app.id}"
+      ],
+      "metric": "4a07c205-2035-4281-9974-c760e6afea74"
+    },
+    {
+      "name": "Conversion Goals for easyTravel",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 456,
+        "width": 380,
+        "height": 38
+      },
+      "tileFilter": {}
+    },
+    {
+      "name": "Conversion goal",
+      "tileType": "UEM_CONVERSIONS_PER_GOAL",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 912,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {
+        "timeframe": "-30d to now"
+      },
+      "assignedEntities": [
+        "${app.id}"
+      ],
+      "metric": "09a4622d-734a-425b-ac4c-9e914a9a737d"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 760,
+        "width": 304,
+        "height": 152
+      },
+      "tileFilter": {},
+      "markdown": "[Preset RUM Dashboard](#dashboard;id=id=c704bd72-92e9-452a-b40e-73e6f4df9f08)"
+    }
+  ]
+}
